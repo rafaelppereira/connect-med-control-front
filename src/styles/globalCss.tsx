@@ -34,5 +34,14 @@ export const globalStyles = globalCss({
   '::-webkit-scrollbar-thumb': {
     background: '$purple500',
     borderRadius: '10px 0 0 10px'
+  },
+  '.cardFlexCol': {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '1.5rem',
+  },
+  '.cardFlexRow': {
+    display: 'flex',
+    gap: '1.5rem',
   }
 })

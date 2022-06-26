@@ -1,12 +1,23 @@
+import { format } from "date-fns";
 import { Bell, Clock, GearSix, MagnifyingGlass } from "phosphor-react";
+import { useAuth } from "../../hooks/useAuth";
 import { HeaderContainer } from "./styles";
 
+import ptBR from 'date-fns/locale/pt-BR';
+
 export function Header() {
+  const { user } = useAuth();
+
+  const dateCurrent = new Date();
+  const currentFormattedDate = format(dateCurrent, "EEEE' • 'd' de 'MMMM", {
+    locale: ptBR
+  });
+
   return (
     <HeaderContainer>
       <div className="datetime">
         <Clock size={20} />
-        <time dateTime="25 de julho de 2022" title="25 de julho de 2022">25 de julho de 2022</time>
+        <time dateTime={currentFormattedDate} title={currentFormattedDate}>{currentFormattedDate}</time>
       </div>
       <div className="searchInput">
         <MagnifyingGlass size={17} />
@@ -31,10 +42,14 @@ export function Header() {
         </div>
 
         <div className="user">
-          <div className="avatar">R</div>
+          {user?.avatarURL ? (
+            <img src={user?.avatarURL} alt={`Imagem de perfil de ${user?.avatarURL}`} />
+          ) : (
+            <div className="avatar">R</div>
+          )}
           <div className="userInfo">
-            <strong>Rafael Pereira</strong>
-            <span>rafaelsantospereira03@gmail.com</span>
+            <strong>{user?.name}</strong>
+            <span>{user?.email}</span>
           </div>
         </div>
       </div>

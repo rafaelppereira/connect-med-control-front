@@ -14,6 +14,8 @@ export const SchemeContainer = styled('section', {
   },
 
   '.pageContent': {
-    padding: '2rem 4rem',
+    padding: '2rem 2.5rem',
+    display: 'flex',
+    flexDirection: 'column',
   }
 })

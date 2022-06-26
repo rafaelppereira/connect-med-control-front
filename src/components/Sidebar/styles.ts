@@ -8,6 +8,7 @@ export const SidebarAside = styled('aside', {
 
   display: 'flex',
   flexDirection: 'column',
+  flexShrink: 0,
 
   '.topside': {
     display: 'flex',
@@ -34,6 +35,9 @@ export const SidebarAside = styled('aside', {
     '.menu': {
       display: 'flex',
       flexDirection: 'column',
+      height: '100%',
+      maxHeight: '100%',
+      overflowY: 'auto',
 
       '.reportsLink': {
         background: '$gray200',
@@ -50,6 +54,52 @@ export const SidebarAside = styled('aside', {
           filter: 'brightness(0.8)'
         }
       },
+
+      '.itemsLink': {
+        display: 'flex',
+        flexDirection: 'column',
+        marginTop: '2rem',
+        padding: '0 1.5rem',
+
+        'a': {
+          color: '$white',
+          fontSize: '1rem',
+          padding: '0.4rem 0',
+          transition: 'color 0.2s',
+
+          '&:hover': {
+            color: '$purple500'
+          },
+
+          '&.active': {
+            color: '$purple500'
+          }
+        },
+
+        '.itemsTitle': {
+          margin: '2rem 0 0.4rem 0',
+          fontSize: '0.7rem',
+          opacity: '0.7',
+          color: '$white',
+          fontWeight: 200,
+          marginLeft: '15px',
+          position: 'relative',
+
+          '&::before': {
+            content: '',
+            position: 'absolute',
+            left: '-15px',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            borderRadius: '50%',
+            display: 'block',
+
+            width: '7px',
+            height: '7px',
+            background: '$purple500'
+          }
+        }
+      }
     },
 
     '.leave': {

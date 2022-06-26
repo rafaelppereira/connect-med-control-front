@@ -1,12 +1,15 @@
 import Link from "next/link";
-import { GooglePodcastsLogo } from "phosphor-react";
+import { useRouter } from "next/router";
+
 import { NavLink } from "./NavLink";
 import { SidebarAside } from "./styles";
 
 export function Sidebar() {
+  const router = useRouter();
 
   const handleSignOutMethod = () => {
     console.log('Desconectado');
+    router.push('/auth');
   }
 
   return (
@@ -25,6 +28,18 @@ export function Sidebar() {
               Relatórios
             </a>
           </Link>
+
+          <div className="itemsLink">
+            <NavLink url="/app">Dashboard</NavLink>
+            <NavLink url="/app/calendario">Calendário</NavLink>
+            <strong className="itemsTitle">Gerenciamento</strong>
+            <NavLink url="/app/gerenciar/unidades">Unidades</NavLink>
+            <NavLink url="/app/gerenciar/medicamentos">Medicamentos</NavLink>
+            <strong className="itemsTitle">Adicionar</strong>
+            <NavLink url="/app/adicionar/usuarios">Usuários</NavLink>
+            <NavLink url="/app/adicionar/prescricao">Prescrição</NavLink>
+          </div>
+
         </div>
         <div className="leave">
           <button

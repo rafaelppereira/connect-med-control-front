@@ -7,7 +7,7 @@ export const HeaderContainer = styled('header', {
 
   height: '6rem',
   background: '$gray700',
-  padding: '0 4rem',
+  padding: '0 2.5rem',
 
   '.datetime': {
     color: '$white',
@@ -28,7 +28,6 @@ export const HeaderContainer = styled('header', {
 
   '.searchInput': {
     position: 'relative',
-    width: '350px',
 
     'svg': {
       position: 'absolute',
@@ -39,7 +38,7 @@ export const HeaderContainer = styled('header', {
     },
 
     'input': {
-      width: '100%',
+      width: '300px',
       height: '40px',
       borderRadius: '9999px',
       border: 0,
@@ -103,6 +102,14 @@ export const HeaderContainer = styled('header', {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+      },
+
+      'img': {
+        background: '$purple500',
+        width: '55px',
+        height: '55px',
+        borderRadius: '50%',
+        border: '2px solid $purple600',
       },
   
       '.userInfo': {

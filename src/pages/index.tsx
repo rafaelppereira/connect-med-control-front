@@ -4,10 +4,10 @@ export default function Home() {
   return null;
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const authenticated = false;
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const { token } = req.cookies;
 
-  if (authenticated === false) {
+  if (!token) {
     return {
       redirect: {
         destination: '/auth',
