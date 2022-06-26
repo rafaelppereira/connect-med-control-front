@@ -43,5 +43,9 @@ export const globalStyles = globalCss({
   '.cardFlexRow': {
     display: 'flex',
     gap: '1.5rem',
+  },
+  '.flex-grid': {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(5, 1fr)',
   }
 })

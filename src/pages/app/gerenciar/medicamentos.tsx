@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Card } from "../../../components/Card";
 import { CardManagement } from "../../../components/CardManagement";
 import { Scheme } from "../../../components/Scheme";
+import { SpinLoader } from "../../../components/Spin";
 import { api } from "../../../services/api";
 
 interface ListProps {
@@ -37,9 +38,9 @@ export default function ManageMedications() {
             description="Gerencie os medicamentos por status"
           >
             {isLoading ? (
-              <h1> World</h1>
+              <SpinLoader />
             ) : (
-              <div>
+              <div className="flex-grid">
                 {list.map(item => {
                   return (
                     <CardManagement 
@@ -53,6 +54,12 @@ export default function ManageMedications() {
                 })}
               </div>
             )}
+          </Card>
+          <Card 
+            title="Tracking de dados"
+            description=""
+          >
+            dawdawd
           </Card>
         </div>
       </Scheme>

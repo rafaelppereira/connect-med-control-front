@@ -17,5 +17,7 @@ export const SchemeContainer = styled('section', {
     padding: '2rem 2.5rem',
     display: 'flex',
     flexDirection: 'column',
+    height: 'calc(100vh - 6rem)',
+    overflowY: 'auto'
   }
 })
