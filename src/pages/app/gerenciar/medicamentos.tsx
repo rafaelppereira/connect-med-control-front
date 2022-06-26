@@ -1,3 +1,4 @@
+import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { Card } from "../../../components/Card";
@@ -13,10 +14,12 @@ interface ListProps {
 
 export default function ManageMedications() {
   const [list, setList] = useState<ListProps[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     api.get('/images').then((res) => {
       setList(res.data.list);
+      setIsLoading(false);
     }).catch((err) => {
       console.log(err);
     })
@@ -33,20 +36,43 @@ export default function ManageMedications() {
             title="Gerenciamento de medicamentos"
             description="Gerencie os medicamentos por status"
           >
-            {list.map(item => {
-              return (
-                <CardManagement 
-                  key={item.id}
-                  clinicName="São Gerônimo"
-                  name={item.name}
-                  url={item.url}
-                  status={true}
-                />
-              )
-            })}
+            {isLoading ? (
+              <h1> World</h1>
+            ) : (
+              <div>
+                {list.map(item => {
+                  return (
+                    <CardManagement 
+                      key={item.id}
+                      clinicName="São Gerônimo"
+                      name={item.name}
+                      url={item.url}
+                      status={true}
+                    />
+                  )
+                })}
+              </div>
+            )}
           </Card>
         </div>
       </Scheme>
     </>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const { token } = req.cookies;
+
+  if (!token) {
+    return {
+      redirect: {
+        destination: '/auth',
+        permanent: true,
+      }
+    }
+  }
+
+  return {
+    props: {}
+  }
 }

@@ -23,7 +23,7 @@ interface UserProps {
   email: string;
   name: string;
   role: string;
-  avatarURL: string;
+  avatarurl: string;
 }
 
 export const AuthContext = createContext({} as AuthContextData);
@@ -67,16 +67,14 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }
 
   useEffect(() => {
-    //Method
-    const data = {
-      id: 1,
-      email: 'rafaelsantospereira03@gmail.com',
-      name: 'Rafael Pereira',
-      role: 'administrador',
-      avatarURL: 'https://media.graphassets.com/output=format:jpg/resize=height:800,fit:max/3DmnIyaTv2XolrikuTXp',
-    }
-
-    setUser(data);
+    const tokenCookies = Cookie.get('token');
+    api.get('/user', {
+      headers: {'Authorization': `Bearer ${tokenCookies}`}
+    }).then((res) => {
+      setUser(res.data.user);
+    }).catch((err) => {
+      console.log(err);
+    })
   }, [])
   
   return (

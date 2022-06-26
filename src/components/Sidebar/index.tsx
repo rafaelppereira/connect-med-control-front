@@ -3,12 +3,13 @@ import { useRouter } from "next/router";
 
 import { NavLink } from "./NavLink";
 import { SidebarAside } from "./styles";
+import Cookie from 'js-cookie';
 
 export function Sidebar() {
   const router = useRouter();
 
   const handleSignOutMethod = () => {
-    console.log('Desconectado');
+    Cookie.remove('token');
     router.push('/auth');
   }
 

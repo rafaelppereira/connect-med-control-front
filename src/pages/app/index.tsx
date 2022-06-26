@@ -1,3 +1,4 @@
+import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { Card } from "../../components/Card";
 import { Scheme } from "../../components/Scheme";
@@ -40,4 +41,21 @@ export default function App() {
       </Scheme>
     </> 
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const { token } = req.cookies;
+
+  if (!token) {
+    return {
+      redirect: {
+        destination: '/auth',
+        permanent: true,
+      }
+    }
+  }
+
+  return {
+    props: {}
+  }
 }

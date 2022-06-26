@@ -42,8 +42,8 @@ export function Header() {
         </div>
 
         <div className="user">
-          {user?.avatarURL ? (
-            <img src={user?.avatarURL} alt={`Imagem de perfil de ${user?.avatarURL}`} />
+          {user?.avatarurl ? (
+            <img src={user?.avatarurl} alt={`Imagem de perfil de ${user?.avatarurl}`} />
           ) : (
             <div className="avatar">R</div>
           )}
