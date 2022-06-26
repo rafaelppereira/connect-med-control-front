@@ -36,6 +36,7 @@ export default function ManageMedications() {
             {list.map(item => {
               return (
                 <CardManagement 
+                  key={item.id}
                   clinicName="São Gerônimo"
                   name={item.name}
                   url={item.url}
